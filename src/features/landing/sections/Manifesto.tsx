@@ -10,7 +10,7 @@ export function Manifesto() {
       <div className="mx-auto max-w-[1440px]">
         <h2 id="manifesto-title" className="display max-w-[16ch] text-[clamp(2.4rem,6vw,6rem)] leading-[0.98] md:ml-[16.66%]" data-reveal="mask-block">
           VOW. n’est pas un site de mariage. <span className="text-pearl-mute">C’est la première chose que vos invités verront de votre</span>{' '}
-          <em className="text-iris">plus beau jour.</em>
+          <em>plus beau jour.</em>
         </h2>
         <div className="mt-24 grid gap-14 md:ml-[16.66%] md:grid-cols-3 md:gap-12">
           {PRINCIPLES.map((p) => (

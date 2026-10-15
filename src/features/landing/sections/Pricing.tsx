@@ -8,23 +8,23 @@ export function Pricing() {
       <div className="mx-auto max-w-[1440px]">
         <div className="grid gap-8 md:grid-cols-12 md:items-end">
           <h2 id="pricing-title" className="display text-[clamp(2.6rem,6vw,6rem)] md:col-span-7" data-reveal="mask-block">
-            Trois offres. <em className="text-iris">Un seul paiement.</em>
+            Trois offres. <em>Un seul paiement.</em>
           </h2>
           <p className="text-pearl-dim md:col-span-4 md:col-start-9">
             Pas d’abonnement, pas de frais cachés. Votre invitation reste en ligne pendant toute la durée de l’offre choisie.
           </p>
         </div>
-        <div className="mt-20 grid gap-4 md:grid-cols-3 md:gap-0">
+        <div className="mt-20 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-0">
           {PLANS.map((p) => (
             <article
               key={p.id}
               aria-labelledby={`plan-${p.id}`}
               className={cn(
-                'relative flex flex-col rounded-[1.5rem] p-8 md:rounded-none md:p-10',
+                'relative flex min-w-0 flex-col rounded-[1.5rem] p-7 md:rounded-none md:p-10',
                 p.highlighted ? 'bg-obsidian-3 ring-1 ring-iris/40 md:-my-6 md:rounded-[1.5rem] md:py-16' : 'border border-line md:border-0 md:border-l md:first:border-l-0',
               )}
             >
-              <div className="flex items-baseline justify-between gap-4">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
                 <h3 id={`plan-${p.id}`} className="display text-[2.4rem] leading-none">{p.name}</h3>
                 {p.highlighted && <span className="meta !text-iris">Recommandée</span>}
               </div>

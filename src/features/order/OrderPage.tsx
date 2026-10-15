@@ -14,7 +14,7 @@ export default function OrderPage() {
       <div className="mx-auto grid max-w-[1200px] gap-16 md:grid-cols-12">
         <div className="md:col-span-6">
           <h1 id="order-title" className="display text-[clamp(3rem,8vw,6rem)]">
-            Offre <em className="text-iris">{plan.name}</em>
+            Offre <em>{plan.name}</em>
           </h1>
           <p className="mt-6 text-pearl-dim">{plan.tagline}</p>
           <p className="display tnum mt-10 text-[4.5rem] leading-none">{formatPrice(plan.priceEur)}</p>

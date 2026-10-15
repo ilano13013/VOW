@@ -47,7 +47,7 @@ export const InvitationHero = forwardRef<HTMLHeadingElement, { content: Invitati
         <span data-name className="block will-change-transform [transform:translate3d(calc(var(--px)*-14px),calc(var(--py)*-8px),0)]">
           {content.partnerOne}
         </span>
-        <span data-name className="block pl-[22vw] text-[0.42em] italic leading-[1.1] text-iris [transform:translate3d(calc(var(--px)*-6px),calc(var(--py)*-3px),0)] md:pl-[30vw]">
+        <span data-name className="block pl-[22vw] text-[0.42em] italic leading-[1.1] text-chrome [transform:translate3d(calc(var(--px)*-6px),calc(var(--py)*-3px),0)] md:pl-[30vw]">
           &amp;
         </span>
         <span data-name className="block text-right will-change-transform [transform:translate3d(calc(var(--px)*-22px),calc(var(--py)*-12px),0)]">

@@ -10,7 +10,7 @@ const UNITS = [
 export function Countdown({ dateIso }: { dateIso: string }) {
   const c = useCountdown(dateIso)
   if (c.done) {
-    return <p className="display text-[clamp(2.4rem,6vw,4.5rem)] italic text-iris">Le grand jour est arrivé.</p>
+    return <p className="display text-[clamp(2.4rem,6vw,4.5rem)] italic">Le grand jour est arrivé.</p>
   }
   return (
     <div>

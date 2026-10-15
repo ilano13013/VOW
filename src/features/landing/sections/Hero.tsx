@@ -30,21 +30,21 @@ export function Hero() {
   return (
     <section ref={root} className="grain relative flex min-h-[100svh] flex-col overflow-hidden" aria-labelledby="hero-title">
       <div className="absolute inset-0 md:left-[30%]">
-        <SculptureStage controller={controller} offsetY={0.38} scale={0.95} defer={false} />
+        <SculptureStage controller={controller} offsetY={0.38} scale={0.95} portraitLift defer={false} />
       </div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[52%] bg-gradient-to-t from-obsidian via-obsidian/75 to-transparent md:h-[40%]" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[64%] bg-gradient-to-t from-obsidian via-obsidian/90 to-transparent md:h-[40%]" aria-hidden="true" />
 
-      <p data-hero-fade className="meta pointer-events-none absolute right-5 top-[46%] hidden !text-pearl-mute md:right-10 md:block" aria-hidden="true">
+      <p data-hero-fade className="meta pointer-events-none absolute right-10 top-24 hidden !text-pearl-mute md:block" aria-hidden="true">
         Faites glisser la sculpture
       </p>
 
       <div className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-end px-5 pb-[calc(2.5rem+env(safe-area-inset-bottom))] pt-28 md:px-10 md:pb-16">
-        <h1 id="hero-title" className="display text-[clamp(3.3rem,min(13.5vw,19svh),12.5rem)]">
+        <h1 id="hero-title" className="display text-[clamp(3.3rem,min(12.5vw,18svh),12rem)]">
           <span className="block overflow-hidden pb-[0.06em]">
             <span data-hero-line className="block">Your moment.</span>
           </span>
-          <span className="block overflow-hidden pb-[0.1em] md:pl-[13vw]">
-            <span data-hero-line className="block italic text-iris">Another dimension.</span>
+          <span className="block overflow-hidden pb-[0.1em] md:pl-[6vw] lg:whitespace-nowrap">
+            <span data-hero-line className="block italic">Another dimension.</span>
           </span>
         </h1>
         <div className="mt-8 grid gap-8 md:mt-12 md:grid-cols-[minmax(0,30rem)_auto] md:items-end md:justify-between">

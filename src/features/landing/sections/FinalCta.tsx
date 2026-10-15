@@ -8,7 +8,7 @@ export function FinalCta() {
         <h2 id="cta-title" className="display text-[clamp(3rem,10vw,9.5rem)]" data-reveal="mask-block">
           Your moment.
           <br />
-          <em className="text-iris">Your VOW.</em>
+          <em>Your VOW.</em>
         </h2>
         <p className="mt-10 max-w-[42ch] text-pearl-dim">
           Commandez votre invitation en quelques minutes, composez-la à votre rythme, publiez-la quand vous êtes prêts.

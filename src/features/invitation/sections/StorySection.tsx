@@ -1,4 +1,4 @@
-import { ArtPlate } from '@/components/ui/ArtPlate'
+import { Plate } from '@/components/ui/Plate'
 import { cn } from '@/lib/cn'
 import type { StoryMoment } from '../types'
 
@@ -9,7 +9,7 @@ export function StorySection({ story, isDemo }: { story: StoryMoment[]; isDemo?:
       <div className="mx-auto max-w-[1440px]">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <h2 id="story-title" className="display text-[clamp(3.2rem,10vw,9rem)]" data-reveal="mask-block">
-            Our <em className="text-iris">Story</em>
+            Our <em>Story</em>
           </h2>
           {isDemo && <p className="meta md:pb-6">Récit fictif de démonstration</p>}
         </div>
@@ -20,12 +20,12 @@ export function StorySection({ story, isDemo }: { story: StoryMoment[]; isDemo?:
               <li key={m.year + m.title} className="grid items-center gap-10 md:grid-cols-12">
                 <div className={cn('relative md:col-span-6', flip ? 'md:col-start-7' : 'md:col-start-1', i % 3 === 2 && 'md:col-span-5')}>
                   <div className={cn('overflow-hidden rounded-[1.25rem]', flip ? 'aspect-[4/5]' : 'aspect-[5/4]')}>
-                    <ArtPlate seed={m.art} label={isDemo ? `Visuel abstrait généré illustrant « ${m.title} »` : undefined} />
+                    <Plate seed={m.art} label={isDemo ? `Rendu de la sculpture VOW. illustrant « ${m.title} »` : undefined} />
                   </div>
                   <span
                     className={cn(
                       'display tnum pointer-events-none absolute -bottom-10 text-[clamp(4.5rem,12vw,9rem)] leading-none text-transparent [-webkit-text-stroke:1px_var(--color-chrome)]',
-                      flip ? '-left-2 md:-left-16' : '-right-2 md:-right-16',
+                      flip ? 'left-3 md:-left-16' : 'right-3 md:-right-16',
                     )}
                     aria-hidden="true"
                   >
@@ -33,8 +33,7 @@ export function StorySection({ story, isDemo }: { story: StoryMoment[]; isDemo?:
                   </span>
                 </div>
                 <div className={cn('md:col-span-4', flip ? 'md:col-start-2 md:row-start-1' : 'md:col-start-8')}>
-                  <p className="meta tnum">{m.year}</p>
-                  <h3 className="display mt-4 text-[clamp(2rem,3.6vw,3.25rem)] leading-[1.02]">{m.title}</h3>
+                  <h3 className="display text-[clamp(2rem,3.6vw,3.25rem)] leading-[1.02]">{m.title}</h3>
                   <p className="mt-6 max-w-[40ch] text-pearl-dim">{m.text}</p>
                 </div>
               </li>

@@ -9,6 +9,7 @@ const LandingPage = lazy(() => import('@/features/landing/LandingPage'))
 const DemoInvitationPage = lazy(() => import('@/features/invitation/DemoInvitationPage'))
 const OrderPage = lazy(() => import('@/features/order/OrderPage'))
 const OrganizerPlaceholder = lazy(() => import('@/features/organizer/OrganizerPlaceholder'))
+const PlateRenderPage = import.meta.env.DEV ? lazy(() => import('@/dev/PlateRenderPage')) : null
 
 export function AppRoutes() {
   return (
@@ -22,6 +23,7 @@ export function AppRoutes() {
         </Route>
         {/* Invitations are full-bleed experiences without the marketing chrome. */}
         <Route path="demo" element={<DemoInvitationPage />} />
+        {PlateRenderPage && <Route path="__plates" element={<PlateRenderPage />} />}
       </Routes>
     </Suspense>
   )

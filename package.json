@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "VOW. — Digital art wedding experiences. Your moment. Another dimension.",
+  "description": "VOW. \u2014 Digital art wedding experiences. Your moment. Another dimension.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -11,7 +11,8 @@
     "typecheck": "tsc -b --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "plates": "node scripts/render-plates.mjs"
   },
   "engines": {
     "node": ">=20"

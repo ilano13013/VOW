@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArtPlate } from '@/components/ui/ArtPlate'
+import { Plate } from '@/components/ui/Plate'
 import { cn } from '@/lib/cn'
 import { ArrowIcon } from '@/components/ui/Icon'
 import type { Memory } from '../types'
@@ -33,7 +33,7 @@ export function MemoriesSection({ memories, isDemo }: { memories: Memory[]; isDe
           <h2 id="memories-title" className="display text-[clamp(3.2rem,10vw,9rem)]" data-reveal="mask-block">
             Memories
           </h2>
-          {isDemo && <p className="meta max-w-[34ch] md:pb-6 md:text-right">Galerie de démonstration — visuels abstraits générés</p>}
+          {isDemo && <p className="meta max-w-[34ch] md:pb-6 md:text-right">Galerie de démonstration — rendus de la sculpture, sans photos réelles</p>}
         </div>
         <ul className="mt-20 columns-2 gap-3 md:columns-3 md:gap-6">
           {memories.map((m, i) => (
@@ -49,7 +49,7 @@ export function MemoriesSection({ memories, isDemo }: { memories: Memory[]; isDe
               >
                 <span className={cn('block overflow-hidden rounded-[1rem]', SHAPE[m.shape])}>
                   <span className="block h-full w-full transition-transform duration-[1200ms] ease-[var(--ease-couture)] group-hover:scale-[1.04]">
-                    <ArtPlate seed={m.art} />
+                    <Plate seed={m.art} />
                   </span>
                 </span>
                 <span className="mt-3 block text-[0.9375rem] text-pearl">{m.title}</span>
@@ -80,7 +80,7 @@ export function MemoriesSection({ memories, isDemo }: { memories: Memory[]; isDe
           <figure>
             <div className="max-h-[70vh] overflow-hidden rounded-[1.25rem]">
               <div className={cn('mx-auto max-h-[70vh]', SHAPE[current.shape], current.shape === 'tall' ? 'w-[min(100%,52vh)]' : 'w-full')}>
-                <ArtPlate seed={current.art} label={`Visuel abstrait : ${current.title}`} />
+                <Plate seed={current.art} label={`Rendu de la sculpture VOW. : ${current.title}`} />
               </div>
             </div>
             <figcaption className="mt-5 flex flex-wrap items-baseline justify-between gap-4">

@@ -34,7 +34,7 @@ export function Faq() {
     <section id="faq" className="scroll-mt-20 px-5 py-32 md:px-10 md:py-44" aria-labelledby="faq-title">
       <div className="mx-auto grid max-w-[1440px] gap-16 md:grid-cols-12">
         <h2 id="faq-title" className="display text-[clamp(2.6rem,5vw,5rem)] md:col-span-4" data-reveal="mask-block">
-          Questions <em className="text-iris">fréquentes</em>
+          Questions <em>fréquentes</em>
         </h2>
         <div className="divide-y divide-line border-y border-line md:col-span-7 md:col-start-6">
           {QUESTIONS.map((item) => (

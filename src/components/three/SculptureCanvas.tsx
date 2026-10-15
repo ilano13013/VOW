@@ -19,6 +19,13 @@ export interface SculptureCanvasProps {
   offsetX?: number
   offsetY?: number
   scale?: number
+  /** Raise and shrink the sculpture on portrait screens so it clears the copy below. */
+  portraitLift?: boolean
+  /**
+   * Deterministic still for offline plate rendering (dev route /__plates only):
+   * fixes time, pose, material mix and crop from the seed.
+   */
+  still?: number
   onReady?: () => void
   onContextLost?: () => void
 }
@@ -50,7 +57,28 @@ function usePointer() {
   return p
 }
 
-function Sculpture({ controller, tier, reducedMotion, offsetX = 0, offsetY = 0, scale = 1 }: SculptureCanvasProps) {
+export function stillPose(seed: number) {
+  const f = (k: number) => {
+    const x = Math.sin(seed * 12.9898 + k * 78.233) * 43758.5453
+    return x - Math.floor(x)
+  }
+  return {
+    time: 4 + seed * 2.37,
+    spin: f(1) * Math.PI * 2,
+    tilt: (f(2) - 0.5) * 0.9,
+    roll: (f(3) - 0.5) * 0.6,
+    metal: seed % 4 === 0 ? 0.55 : 0,
+    distort: 0.14 + f(4) * 0.16,
+    scale: 0.9 + f(5) * 0.9,
+    x: (f(6) - 0.5) * 1.2,
+    y: (f(7) - 0.5) * 0.8,
+    ring: seed % 3 !== 0,
+    particles: seed % 2 === 1,
+  }
+}
+
+function Sculpture({ controller, tier, reducedMotion, offsetX = 0, offsetY = 0, scale = 1, portraitLift, still }: SculptureCanvasProps) {
+  const pose = still !== undefined ? stillPose(still) : null
   const group = useRef<THREE.Group>(null)
   const ring = useRef<THREE.Mesh>(null)
   const pointer = usePointer()
@@ -122,6 +150,21 @@ function Sculpture({ controller, tier, reducedMotion, offsetX = 0, offsetY = 0, 
 
   useFrame((state, delta) => {
     const dt = Math.min(delta, 1 / 20)
+    const g0 = group.current
+    if (pose && g0) {
+      glassMat.uniforms.uTime.value = pose.time
+      glassMat.uniforms.uDistort.value = pose.distort
+      glassMat.uniforms.uMetal.value = pose.metal
+      chromeMat.uniforms.uTime.value = pose.time
+      g0.rotation.set(pose.tilt, pose.spin, pose.roll)
+      g0.position.set(pose.x, pose.y, 0)
+      g0.scale.setScalar(pose.scale)
+      if (ring.current) {
+        ring.current.visible = pose.ring
+        ring.current.rotation.set(Math.PI / 2.35 + pose.tilt, pose.time * 0.18, 0)
+      }
+      return
+    }
     const t = reducedMotion ? FROZEN_TIME : state.clock.elapsedTime + FROZEN_TIME
     const open = controller.open
     glassMat.uniforms.uTime.value = t
@@ -143,11 +186,11 @@ function Sculpture({ controller, tier, reducedMotion, offsetX = 0, offsetY = 0, 
     g.position.x = THREE.MathUtils.damp(g.position.x, offsetX + p.x * 0.12, 2.5, dt)
     g.position.y = THREE.MathUtils.damp(
       g.position.y,
-      offsetY + (reducedMotion ? 0 : Math.sin(t * 0.6) * 0.06) - controller.scroll * 0.8,
+      offsetY + (portrait && portraitLift ? 0.62 : 0) + (reducedMotion ? 0 : Math.sin(t * 0.6) * 0.06) - controller.scroll * 0.8,
       2.5,
       dt,
     )
-    const s = scale * (portrait ? 0.72 : 1) * (1 + open * 0.18)
+    const s = scale * (portrait ? (portraitLift ? 0.6 : 0.72) : 1) * (1 + open * 0.18)
     g.scale.setScalar(THREE.MathUtils.damp(g.scale.x, s, 4, dt))
 
     if (ring.current) {
@@ -249,7 +292,9 @@ export default function SculptureCanvas(props: SculptureCanvasProps) {
       aria-hidden="true"
     >
       <Sculpture {...props} />
-      <Particles controller={props.controller} tier={tier} reducedMotion={reducedMotion} />
+      {(props.still === undefined || stillPose(props.still).particles) && (
+        <Particles controller={props.controller} tier={tier} reducedMotion={reducedMotion || props.still !== undefined} />
+      )}
       <ReadySignal onReady={props.onReady} onContextLost={props.onContextLost} />
     </Canvas>
   )

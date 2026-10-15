@@ -28,7 +28,7 @@ export function DaySection({ content }: { content: InvitationContent }) {
     <section id="the-day" className="scroll-mt-10 bg-obsidian-2 px-5 py-32 md:px-10 md:py-48" aria-labelledby="day-title">
       <div className="mx-auto max-w-[1440px]">
         <h2 id="day-title" className="display text-[clamp(3.2rem,10vw,9rem)]" data-reveal="mask-block">
-          The <em className="text-iris">Day</em>
+          The <em>Day</em>
         </h2>
         <p className="mt-6 text-[1.25rem] capitalize text-pearl">
           <time dateTime={content.dateIso}>{formatLongDate(content.dateIso)}</time>
@@ -49,7 +49,7 @@ export function DaySection({ content }: { content: InvitationContent }) {
           <ol className="md:col-span-7 md:col-start-6">
             {content.schedule.map((s) => (
               <li key={s.time + s.title} className="grid grid-cols-[6.5rem_1fr] gap-6 border-b border-line py-6 first:pt-0 md:grid-cols-[9rem_1fr]">
-                <span className="tnum text-iris">{s.time}</span>
+                <span className="tnum text-chrome">{s.time}</span>
                 <span>
                   <span className="block text-[1.1875rem] text-pearl">{s.title}</span>
                   {s.detail && <span className="mt-1 block text-pearl-dim">{s.detail}</span>}

@@ -19,7 +19,7 @@ STORY: In five seconds the visitor sees a sculpture reacting to their finger and
 
 FIRST VIEWPORT: Landing: the sculpture fills the right two thirds (centred and higher on mobile). The two-line headline is set bottom-left at monumental size, the second line indented and italic. The primary action "Ouvrir l'invitation démo" is a pearl pill beside the subcopy; the secondary action leads to the plans. Demo: black screen, floating sculpture, particles, the opening line, and an "Open the invitation" control at the optical centre.
 
-FORM: brief-pinned direction (Digital Art / Futuristic Couture); position 1 of 1. seed: none (unavailable)
+FORM: brief-pinned direction (Digital Art / Futuristic Couture); position 1 of 1. seed: none (direction pinned by brief; roll not run)
 
 Signature interaction: the opening. The sculpture inflates with light, a pearl-iris flash crosses the screen, and the couple's names rise from depth (blur and scale settling to sharp). Motion grammar: expo-out from visible defaults; one authored moment per page; reduced motion swaps it for a crossfade.
 

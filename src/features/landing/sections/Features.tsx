@@ -1,5 +1,5 @@
 import { useId, useRef, useState, type KeyboardEvent } from 'react'
-import { ArtPlate } from '@/components/ui/ArtPlate'
+import { Plate } from '@/components/ui/Plate'
 import { cn } from '@/lib/cn'
 
 interface Feature {
@@ -72,7 +72,7 @@ export function Features() {
     <section id="fonctionnalites" className="scroll-mt-20 border-t border-line px-5 py-32 md:px-10 md:py-44" aria-labelledby="features-title">
       <div className="mx-auto max-w-[1440px]">
         <h2 id="features-title" className="display max-w-[14ch] text-[clamp(2.6rem,6vw,6rem)]" data-reveal="mask-block">
-          Tout ce qu’une invitation <em className="text-iris">devrait faire.</em>
+          Tout ce qu’une invitation <em>devrait faire.</em>
         </h2>
 
         {/* Mobile: readable list. Desktop: index + plate. */}
@@ -122,7 +122,7 @@ export function Features() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-[1.25rem]">
               {FEATURES.map((x, i) => (
                 <div key={x.title} className={cn('absolute inset-0 transition-[opacity,transform] duration-[900ms] ease-[var(--ease-couture)]', i === active ? 'scale-100 opacity-100' : 'scale-[1.04] opacity-0')} aria-hidden="true">
-                  <ArtPlate seed={x.art} />
+                  <Plate seed={x.art} />
                 </div>
               ))}
             </div>

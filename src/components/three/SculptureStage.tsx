@@ -27,6 +27,7 @@ export interface SculptureStageProps {
   offsetX?: number
   offsetY?: number
   scale?: number
+  portraitLift?: boolean
   /** Delay mounting the WebGL chunk until the browser is idle (keeps first paint fast). */
   defer?: boolean
 }
@@ -37,7 +38,7 @@ type Mode = 'probing' | 'webgl' | 'fallback'
  * Progressive 3D: CSS poster first → WebGL scene fades in when its first frame is ready.
  * Falls back permanently on no-WebGL, save-data, render error or context loss.
  */
-export function SculptureStage({ controller, className, offsetX, offsetY, scale, defer = true }: SculptureStageProps) {
+export function SculptureStage({ controller, className, offsetX, offsetY, scale, portraitLift, defer = true }: SculptureStageProps) {
   const reducedMotion = useReducedMotion()
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref)
@@ -85,6 +86,7 @@ export function SculptureStage({ controller, className, offsetX, offsetY, scale,
                 offsetX={offsetX}
                 offsetY={offsetY}
                 scale={scale}
+                portraitLift={portraitLift}
                 onReady={() => setReady(true)}
                 onContextLost={() => {
                   setReady(false)

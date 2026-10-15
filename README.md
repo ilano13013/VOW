@@ -33,6 +33,7 @@ npm run dev                  # http://localhost:5173, also exposed on the local 
 | `npm run preview` | Serve the production build |
 | `npm test` | Unit and component tests (Vitest, jsdom) |
 | `npm run test:e2e` | End-to-end tests (Playwright: desktop Chrome and emulated iPhone 14 Pro) |
+| `npm run plates` | Regenerates the demo images (`public/plates/`) from the real 3D sculpture. Needs `ffmpeg` with libwebp |
 
 `npm run test:e2e` builds the app and then starts `vite preview` by itself.
 
@@ -53,7 +54,7 @@ src/
   components/
     layout/            header, footer, scroll management
     three/             3D sculpture: GLSL shaders, R3F canvas (lazy), CSS fallback, progressive stage
-    ui/                buttons, icons, procedural art plates, demo badge
+    ui/                buttons, icons, plates (raster images), demo badge
   data/                fictional demo content
   features/
     landing/           landing sections
@@ -62,7 +63,10 @@ src/
     order/             order page
   hooks/               reduced motion, countdown, scroll reveal, visibility
   lib/                 device detection, GSAP, utilities
+  dev/                 development-only route /__plates (renders the plates)
 e2e/                   Playwright tests
+scripts/               render-plates.mjs
+public/plates/         WebP stills of the sculpture and a capture of the demo, plus PROVENANCE.json
 ```
 
 ### Immersive 3D layer
@@ -80,7 +84,7 @@ e2e/                   Playwright tests
 - RSVP: the demo shows a placeholder section. The working form with individual tokens arrives in Phase B.
 - Organizer space: placeholder page.
 - Payment: no payment is possible. The order page says so explicitly.
-- Memories: the gallery uses procedurally generated abstract visuals (SVG), labelled as such. Secure upload is not implemented.
+- Our Story and Memories: the demo images are stills rendered from the VOW. sculpture itself (no real photos), and they are labelled as such. Their origin is listed in `public/plates/PROVENANCE.json`. Secure photo upload is not implemented.
 - Couture: the custom palette and sculpture are a manual studio service, not an automated feature.
 - Playwright tests emulate the iPhone (viewport, touch, user agent) on Chromium, because WebKit is not installed in the development environment. A test on a real iPhone or Safari remains necessary.
 

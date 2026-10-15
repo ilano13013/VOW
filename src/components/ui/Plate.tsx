@@ -10,7 +10,7 @@ export function Plate({ seed, className, label, eager = false }: { seed: number;
   const s = (PLATE_SEEDS as readonly number[]).includes(seed) ? seed : PLATE_SEEDS[seed % PLATE_SEEDS.length]
   return (
     <img
-      src={`/plates/plate-${s}.webp`}
+      src={`${import.meta.env.BASE_URL}plates/plate-${s}.webp`}
       width={1200}
       height={1500}
       alt={label ?? ''}

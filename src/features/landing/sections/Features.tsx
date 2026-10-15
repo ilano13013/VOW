@@ -119,7 +119,7 @@ export function Features() {
             ))}
           </div>
           <div id={`${base}-panel`} role="tabpanel" aria-labelledby={`${base}-tab-${active}`} className="col-span-5 col-start-8 self-start">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.25rem]">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.25rem] border border-chrome/20">
               {FEATURES.map((x, i) => (
                 <div key={x.title} className={cn('absolute inset-0 transition-[opacity,transform] duration-[900ms] ease-[var(--ease-couture)]', i === active ? 'scale-100 opacity-100' : 'scale-[1.04] opacity-0')} aria-hidden="true">
                   <Plate seed={x.art} />

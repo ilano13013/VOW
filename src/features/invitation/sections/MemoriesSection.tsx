@@ -47,7 +47,7 @@ export function MemoriesSection({ memories, isDemo }: { memories: Memory[]; isDe
                 }}
                 aria-label={`Agrandir : ${m.title}`}
               >
-                <span className={cn('block overflow-hidden rounded-[1rem]', SHAPE[m.shape])}>
+                <span className={cn('block overflow-hidden rounded-[1rem] border border-chrome/20', SHAPE[m.shape])}>
                   <span className="block h-full w-full transition-transform duration-[1200ms] ease-[var(--ease-couture)] group-hover:scale-[1.04]">
                     <Plate seed={m.art} />
                   </span>

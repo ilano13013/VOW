@@ -16,7 +16,7 @@ export function DemoShowcase() {
           <div className="relative aspect-[393/852] overflow-hidden rounded-[2.6rem] border border-chrome/30 bg-obsidian p-2 shadow-[0_50px_100px_-40px_rgb(0_0_0/0.9)]">
             <div className="relative h-full overflow-hidden rounded-[2.1rem]">
               <img
-                src="/plates/demo-phone.webp"
+                src={`${import.meta.env.BASE_URL}plates/demo-phone.webp`}
                 width={720}
                 height={1558}
                 loading="lazy"

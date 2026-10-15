@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, MemoryRouter, Route, Routes } from 'react-router-dom'
 import { SiteLayout } from '@/components/layout/SiteLayout'
 import { ScrollManager } from '@/components/layout/ScrollManager'
 import { RouteFallback } from './RouteFallback'
@@ -29,11 +29,15 @@ export function AppRoutes() {
   )
 }
 
+// Embedded previews (sandboxed frames that cannot carry routes in their URL) build with
+// VITE_ROUTER=memory; production uses real URLs.
+const Router = import.meta.env.VITE_ROUTER === 'memory' ? MemoryRouter : BrowserRouter
+
 export default function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <ScrollManager />
       <AppRoutes />
-    </BrowserRouter>
+    </Router>
   )
 }

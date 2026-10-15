@@ -19,7 +19,7 @@ export function StorySection({ story, isDemo }: { story: StoryMoment[]; isDemo?:
             return (
               <li key={m.year + m.title} className="grid items-center gap-10 md:grid-cols-12">
                 <div className={cn('relative md:col-span-6', flip ? 'md:col-start-7' : 'md:col-start-1', i % 3 === 2 && 'md:col-span-5')}>
-                  <div className={cn('overflow-hidden rounded-[1.25rem]', flip ? 'aspect-[4/5]' : 'aspect-[5/4]')}>
+                  <div className={cn('overflow-hidden rounded-[1.25rem] border border-chrome/20', flip ? 'aspect-[4/5]' : 'aspect-[5/4]')}>
                     <Plate seed={m.art} label={isDemo ? `Rendu de la sculpture VOW. illustrant « ${m.title} »` : undefined} />
                   </div>
                   <span
@@ -32,7 +32,7 @@ export function StorySection({ story, isDemo }: { story: StoryMoment[]; isDemo?:
                     {m.year}
                   </span>
                 </div>
-                <div className={cn('md:col-span-4', flip ? 'md:col-start-2 md:row-start-1' : 'md:col-start-8')}>
+                <div className={cn('mt-8 md:col-span-4 md:mt-0', flip ? 'md:col-start-2 md:row-start-1' : 'md:col-start-8')}>
                   <h3 className="display text-[clamp(2rem,3.6vw,3.25rem)] leading-[1.02]">{m.title}</h3>
                   <p className="mt-6 max-w-[40ch] text-pearl-dim">{m.text}</p>
                 </div>

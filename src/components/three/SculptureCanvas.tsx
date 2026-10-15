@@ -67,12 +67,13 @@ export function stillPose(seed: number) {
     spin: f(1) * Math.PI * 2,
     tilt: (f(2) - 0.5) * 0.9,
     roll: (f(3) - 0.5) * 0.6,
-    metal: seed % 4 === 0 ? 0.55 : 0,
+    metal: seed % 4 === 1 ? 0.6 : 0,
     distort: 0.14 + f(4) * 0.16,
-    scale: 0.9 + f(5) * 0.9,
-    x: (f(6) - 0.5) * 1.2,
-    y: (f(7) - 0.5) * 0.8,
-    ring: seed % 3 !== 0,
+    // three framings: whole piece with air (0), macro detail (1), three-quarter (2)
+    scale: seed % 3 === 0 ? 0.5 + f(5) * 0.15 : seed % 3 === 1 ? 1.7 + f(5) * 0.5 : 0.95 + f(5) * 0.3,
+    x: (f(6) - 0.5) * (seed % 3 === 0 ? 0.8 : 1.4),
+    y: (f(7) - 0.5) * (seed % 3 === 0 ? 0.6 : 1),
+    ring: seed % 3 !== 1 || seed % 2 === 1,
     particles: seed % 2 === 1,
   }
 }

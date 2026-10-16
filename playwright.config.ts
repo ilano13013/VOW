@@ -12,6 +12,8 @@ export default defineConfig({
   use: {
     baseURL: `http://localhost:${PORT}`,
     trace: 'retain-on-failure',
+    locale: 'fr-FR',
+    timezoneId: 'Europe/Paris',
     screenshot: 'only-on-failure',
   },
   projects: [

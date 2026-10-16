@@ -4,11 +4,11 @@
 
 VOW. creates immersive digital wedding invitations, designed like works of digital art: a living glass and chrome sculpture in WebGL, monumental editorial typography, a private RSVP for each guest, and an organizer space.
 
-> Status: **MVP 1.0, Phase A** (landing page and immersive demo invitation). The real RSVP, the organizer space and Stripe payment arrive in phases B and C. See [Known limitations](#known-limitations).
+> Status: **MVP 1.0, Phases A and B**: landing page, immersive demo invitation, personal guest invitations with a working RSVP, and an organizer space. Stripe payment arrives in Phase C. See [Known limitations](#known-limitations).
 
 ## Stack
 
-React 19, TypeScript, Vite 6, Tailwind CSS 4, GSAP 3, Three.js and React Three Fiber, Vitest and Testing Library, Playwright. Supabase and Stripe Checkout are added in phases B and C.
+React 19, TypeScript, Vite 6, Tailwind CSS 4, GSAP 3, Three.js and React Three Fiber, Supabase (Auth, Postgres with RLS, Storage), Vitest and Testing Library, Playwright. Stripe Checkout arrives in Phase C.
 
 Fonts (Bodoni Moda, Jost) are self-hosted through `@fontsource-variable`. No call goes to Google Fonts.
 
@@ -16,7 +16,7 @@ Fonts (Bodoni Moda, Jost) are self-hosted through `@fontsource-variable`. No cal
 
 ```bash
 npm install
-cp .env.example .env.local   # optional in Phase A
+cp .env.example .env.local   # optional: without Supabase, the app runs in local demo mode
 npm run dev                  # http://localhost:5173, also exposed on the local network
 ```
 
@@ -33,6 +33,7 @@ npm run dev                  # http://localhost:5173, also exposed on the local 
 | `npm run preview` | Serve the production build |
 | `npm test` | Unit and component tests (Vitest, jsdom) |
 | `npm run test:e2e` | End-to-end tests (Playwright: desktop Chrome and emulated iPhone 14 Pro) |
+| `npm run test:db` | Database tests (RLS, permissions, RSVP validation, rate limits) on a local PostgreSQL. See [docs/SUPABASE.md](docs/SUPABASE.md) |
 | `npm run plates` | Regenerates the demo images (`public/plates/`) from the real 3D sculpture. Needs `ffmpeg` with libwebp |
 
 `npm run test:e2e` builds the app and then starts `vite preview` by itself.
@@ -44,7 +45,11 @@ npm run dev                  # http://localhost:5173, also exposed on the local 
 | `/` | Commercial landing page |
 | `/demo` | Demo invitation for Camille & Gabriel (fictional). `?open=1` skips the opening sequence |
 | `/commander/:plan` | Plan summary (`essential`, `signature`, `couture`). Payment is **not yet open** and the page says so |
-| `/organizer` | Placeholder (Phase B) |
+| `/i/:token` | A guest's personal invitation, with its RSVP |
+| `/organizer/login` | Organizer sign-in and sign-up |
+| `/organizer` | Organizer dashboard: invitations, creation |
+| `/organizer/events/:id` | Overview (RSVP statistics, diets, messages), Guests (personal links, rotation, CSV export), Content (editing), Publish/Unpublish |
+| `/organizer/events/:id/preview` | Full preview, visible to the organizer only |
 
 ## Architecture
 
@@ -77,13 +82,22 @@ public/plates/         WebP stills of the sculpture and a capture of the demo, p
 - **Rendering paused** when the scene leaves the viewport. A single WebGL renderer per page.
 - **prefers-reduced-motion**: the scene freezes on one frame, the opening becomes a crossfade, and scroll reveals are turned off. The setting is reactive.
 
+## Backend: Supabase or local demo mode
+
+- **With Supabase** (variables set): accounts, data and RSVPs live in Postgres, protected by RLS. Setup: [docs/SUPABASE.md](docs/SUPABASE.md).
+- **Without Supabase:** `LocalBackend` stores everything in the browser. It implements the same rules as the database (isolation between accounts, plan quotas, 192-bit tokens, validation, deadline, rate limits) so the product can be tried end to end. It provides **no real security**: data stays on the device, and a banner says so throughout the organizer space.
+- The demo invitation (`/demo`) has a working RSVP. The answer stays in the browser, and the page says so.
+
 ## Known limitations
 
-### Phase A
+### Phases A and B
 
-- RSVP: the demo shows a placeholder section. The working form with individual tokens arrives in Phase B.
-- Organizer space: placeholder page.
-- Payment: no payment is possible. The order page says so explicitly.
+- Payment: no payment is possible. The order page says so explicitly. For now, a new invitation is created on the Essential plan, and publishing does not yet require payment (the payment gate arrives in Phase C).
+- Signature features (Our Story, Memories, CSV export) are not yet restricted by plan.
+- Supabase has not been connected or tested in this environment (no project credentials). The SQL migrations are tested on PostgreSQL 16 with a shim of Supabase's `auth` and `storage` schemas (48 assertions). The Supabase client (`SupabaseBackend`) has not been run against a real project.
+- No e-mail is sent to guests. The organizer copies each personal link and sends it through their own channel.
+- Rate limiting by IP relies on the `x-forwarded-for` header supplied by the Supabase gateway.
+- Memories: organizers cannot add photos yet (no upload interface). The private bucket and its permissions are ready.
 - Our Story and Memories: the demo images are stills rendered from the VOW. sculpture itself (no real photos), and they are labelled as such. Their origin is listed in `public/plates/PROVENANCE.json`. Secure photo upload is not implemented.
 - Couture: the custom palette and sculpture are a manual studio service, not an automated feature.
 - Playwright tests emulate the iPhone (viewport, touch, user agent) on Chromium, because WebKit is not installed in the development environment. A test on a real iPhone or Safari remains necessary.

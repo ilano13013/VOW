@@ -22,3 +22,25 @@ export function mapsLinks(query: string) {
     google: `https://www.google.com/maps/search/?api=1&query=${q}`,
   }
 }
+
+/** "2027-07-18" + "16:00" (Paris wall-clock) → ISO string with the right offset (+01/+02). */
+export function parisIso(date: string, time: string): string {
+  const t = /^\d{2}:\d{2}$/.test(time) ? time : '16:00'
+  for (const offset of ['+02:00', '+01:00']) {
+    const iso = `${date}T${t}:00${offset}`
+    const d = new Date(iso)
+    if (Number.isNaN(d.getTime())) return ''
+    const local = new Intl.DateTimeFormat('en-GB', { timeZone: TZ, hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(d)
+    if (local === t) return iso
+  }
+  return `${date}T${t}:00+01:00`
+}
+
+/** ISO → { date: "YYYY-MM-DD", time: "HH:MM" } in Paris time ('' when invalid). */
+export function splitParisIso(iso: string): { date: string; time: string } {
+  const d = new Date(iso)
+  if (!iso || Number.isNaN(d.getTime())) return { date: '', time: '' }
+  const date = new Intl.DateTimeFormat('en-CA', { timeZone: TZ }).format(d)
+  const time = new Intl.DateTimeFormat('en-GB', { timeZone: TZ, hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(d)
+  return { date, time }
+}

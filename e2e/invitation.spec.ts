@@ -52,6 +52,15 @@ test.describe('demo invitation', () => {
     await expect(first).toBeFocused()
   })
 
+  test('demo RSVP works and stays in the browser', async ({ page }) => {
+    await page.goto('/demo?open=1')
+    await page.locator('#rsvp').scrollIntoViewIfNeeded()
+    await page.getByText('Avec regret').click()
+    await page.getByRole('button', { name: 'Envoyer ma réponse' }).click()
+    await expect(page.getByText('Merci de nous avoir prévenus.')).toBeVisible()
+    expect(await page.evaluate(() => localStorage.getItem('vow.demo.rsvp'))).toContain('"attending":false')
+  })
+
   test('reduced motion: opening is instant and nothing is left hidden', async ({ browser }) => {
     const ctx = await browser.newContext({ reducedMotion: 'reduce' })
     const page = await ctx.newPage()

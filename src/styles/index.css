@@ -152,6 +152,13 @@
   .field::placeholder {
     color: var(--color-pearl-mute);
   }
+  select.field {
+    padding-right: 2rem;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%23B9C8D3' stroke-width='1.2'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.25rem center;
+    cursor: pointer;
+  }
   .field:focus {
     outline: none;
     border-bottom-color: var(--color-iris);

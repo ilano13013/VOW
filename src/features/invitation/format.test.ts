@@ -13,3 +13,16 @@ describe('invitation formatting', () => {
     expect(l.google).toContain('query=Luberon%2C%20Provence%2C%20France')
   })
 })
+
+import { parisIso, splitParisIso } from './format'
+
+describe('Paris wall-clock dates', () => {
+  it('uses +02:00 in summer and +01:00 in winter', () => {
+    expect(parisIso('2027-07-18', '16:00')).toBe('2027-07-18T16:00:00+02:00')
+    expect(parisIso('2027-12-04', '15:30')).toBe('2027-12-04T15:30:00+01:00')
+  })
+  it('round-trips through splitParisIso', () => {
+    expect(splitParisIso('2027-07-18T16:00:00+02:00')).toEqual({ date: '2027-07-18', time: '16:00' })
+    expect(splitParisIso('')).toEqual({ date: '', time: '' })
+  })
+})

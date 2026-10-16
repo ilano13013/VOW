@@ -31,6 +31,7 @@ describe('demo invitation', () => {
     expect(await screen.findByRole('heading', { name: 'Our Story' })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'The Day' })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'RSVP' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Envoyer ma réponse' })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'Memories' })).toBeInTheDocument()
     expect(screen.getByText('dimanche 18 juillet 2027')).toBeInTheDocument()
     expect(screen.getByText(/Plus que \d+ jours/)).toBeInTheDocument()

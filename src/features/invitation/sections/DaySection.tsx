@@ -1,9 +1,11 @@
 import type { InvitationContent, Venue } from '../types'
 import { formatLongDate, mapsLinks } from '../format'
 import { Countdown } from './Countdown'
+import { isValidIso } from '../content'
 
 function VenueBlock({ v, isDemo }: { v: Venue; isDemo?: boolean }) {
-  const links = mapsLinks(v.mapsQuery)
+  if (!v.name.trim()) return null
+  const links = v.mapsQuery.trim() ? mapsLinks(v.mapsQuery) : null
   return (
     <div className="border-t border-line-strong pt-8">
       <p className="meta">{v.label}</p>
@@ -11,40 +13,44 @@ function VenueBlock({ v, isDemo }: { v: Venue; isDemo?: boolean }) {
       <h3 className="display mt-6 text-[2rem] leading-tight">{v.name}</h3>
       {isDemo && <p className="mt-1 text-[0.9375rem] text-pearl-mute">Lieu fictif — l’adresse exacte est communiquée par les mariés.</p>}
       <p className="mt-4 max-w-[38ch] text-pearl-dim">{v.description}</p>
-      <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[0.9375rem]">
+      {links && <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[0.9375rem]">
         <a href={links.apple} target="_blank" rel="noopener noreferrer" className="text-pearl underline decoration-line-strong hover:decoration-iris">
           Itinéraire Plans<span className="sr-only"> pour {v.name} (nouvel onglet)</span>
         </a>
         <a href={links.google} target="_blank" rel="noopener noreferrer" className="text-pearl underline decoration-line-strong hover:decoration-iris">
           Itinéraire Google Maps<span className="sr-only"> pour {v.name} (nouvel onglet)</span>
         </a>
-      </div>
+      </div>}
     </div>
   )
 }
 
 export function DaySection({ content }: { content: InvitationContent }) {
+  const dated = isValidIso(content.dateIso)
   return (
     <section id="the-day" className="scroll-mt-10 bg-obsidian-2 px-5 py-32 md:px-10 md:py-48" aria-labelledby="day-title">
       <div className="mx-auto max-w-[1440px]">
         <h2 id="day-title" className="display text-[clamp(3.2rem,10vw,9rem)]" data-reveal="mask-block">
           The <em>Day</em>
         </h2>
-        <p className="mt-6 text-[1.25rem] capitalize text-pearl">
-          <time dateTime={content.dateIso}>{formatLongDate(content.dateIso)}</time>
-          <span className="normal-case text-pearl-dim"> — {content.locationLabel}</span>
-        </p>
-
-        <div className="mt-16">
-          <Countdown dateIso={content.dateIso} />
-        </div>
+        {dated && (
+          <>
+            <p className="mt-6 text-[1.25rem] capitalize text-pearl">
+              <time dateTime={content.dateIso}>{formatLongDate(content.dateIso)}</time>
+              {content.locationLabel && <span className="normal-case text-pearl-dim"> — {content.locationLabel}</span>}
+            </p>
+            <div className="mt-16">
+              <Countdown dateIso={content.dateIso} />
+            </div>
+          </>
+        )}
 
         <div className="mt-28 grid gap-16 md:grid-cols-2 md:gap-20">
           <VenueBlock v={content.ceremony} isDemo={content.isDemo} />
           <VenueBlock v={content.reception} isDemo={content.isDemo} />
         </div>
 
-        <div className="mt-32 grid gap-16 md:grid-cols-12">
+        {content.schedule.length > 0 && <div className="mt-32 grid gap-16 md:grid-cols-12">
           <h3 className="display text-[clamp(2.4rem,4.6vw,4rem)] leading-none md:col-span-4">Programme</h3>
           <ol className="md:col-span-7 md:col-start-6">
             {content.schedule.map((s) => (
@@ -57,9 +63,9 @@ export function DaySection({ content }: { content: InvitationContent }) {
               </li>
             ))}
           </ol>
-        </div>
+        </div>}
 
-        <div className="mt-32 grid gap-16 md:grid-cols-12">
+        {content.practical.length > 0 && <div className="mt-32 grid gap-16 md:grid-cols-12">
           <h3 className="display text-[clamp(2.4rem,4.6vw,4rem)] leading-none md:col-span-4">Informations pratiques</h3>
           <dl className="grid gap-x-12 gap-y-12 sm:grid-cols-2 md:col-span-7 md:col-start-6">
             {content.practical.map((p) => (
@@ -69,7 +75,7 @@ export function DaySection({ content }: { content: InvitationContent }) {
               </div>
             ))}
           </dl>
-        </div>
+        </div>}
       </div>
     </section>
   )

@@ -1,6 +1,7 @@
 import { forwardRef, useEffect, useRef } from 'react'
 import type { InvitationContent } from '../types'
 import { formatDotDate, formatLongDate } from '../format'
+import { isValidIso } from '../content'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 /** Monumental names with pointer-driven depth (layers drift at different rates). */
@@ -56,8 +57,12 @@ export const InvitationHero = forwardRef<HTMLHeadingElement, { content: Invitati
       </h1>
       <div data-hero-meta className="relative mx-auto mt-10 flex w-full max-w-[1440px] flex-col gap-2 border-t border-line pt-5 sm:flex-row sm:items-baseline sm:justify-between">
         <p className="tnum text-[1.0625rem] text-pearl">
-          <time dateTime={content.dateIso}>{formatDotDate(content.dateIso)}</time>
-          <span className="sr-only"> — {formatLongDate(content.dateIso)}</span>
+          {isValidIso(content.dateIso) && (
+            <>
+              <time dateTime={content.dateIso}>{formatDotDate(content.dateIso)}</time>
+              <span className="sr-only"> — {formatLongDate(content.dateIso)}</span>
+            </>
+          )}
         </p>
         <p className="meta">{content.locationLabel}</p>
       </div>

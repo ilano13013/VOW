@@ -126,7 +126,8 @@ export function Features() {
                 </div>
               ))}
             </div>
-            <p className="mt-8 text-[1.1875rem] text-pearl">{f.text}</p>
+            <p className="meta mt-3 !text-pearl-mute">Rendu de la sculpture VOW.</p>
+            <p className="mt-6 text-[1.1875rem] text-pearl">{f.text}</p>
             <p className="mt-3 text-pearl-dim">{f.detail}</p>
           </div>
         </div>

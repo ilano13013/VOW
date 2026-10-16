@@ -21,6 +21,6 @@ FIRST VIEWPORT: Landing: the sculpture fills the right two thirds (centred and h
 
 FORM: brief-pinned direction (Digital Art / Futuristic Couture); position 1 of 1. seed: none (direction pinned by brief; roll not run)
 
-Signature interaction: the opening. The sculpture inflates with light, a pearl-iris flash crosses the screen, and the couple's names rise from depth (blur and scale settling to sharp). Motion grammar: expo-out from visible defaults; one authored moment per page; reduced motion swaps it for a crossfade.
+Signature interaction: the opening. The sculpture inflates with light, a pearl-iris flash crosses the screen, and the couple's names rise from depth (blur and scale settling to sharp). Motion grammar: expo-out from visible defaults; one authored moment per page; reduced motion replaces it with an instant reveal of the final state.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

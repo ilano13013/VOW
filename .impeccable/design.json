@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-16T00:00:00Z",
+  "title": "Design System: VOW.",
+  "extensions": {
+    "colorMeta": {
+      "obsidian": { "role": "neutral", "displayName": "Obsidian", "canonical": "#0b0b12", "tonalRamp": ["#05050a", "#0b0b12", "#12121c", "#1a1a27", "#2a2a3d", "#4a4a63", "#8a8aa3", "#d6d6e3"] },
+      "obsidian-2": { "role": "neutral", "displayName": "Obsidian Raised", "canonical": "#12121c", "tonalRamp": ["#05050a", "#0b0b12", "#12121c", "#1a1a27", "#2a2a3d", "#4a4a63", "#8a8aa3", "#d6d6e3"] },
+      "obsidian-3": { "role": "neutral", "displayName": "Obsidian Lifted", "canonical": "#1a1a27", "tonalRamp": ["#05050a", "#0b0b12", "#12121c", "#1a1a27", "#2a2a3d", "#4a4a63", "#8a8aa3", "#d6d6e3"] },
+      "pearl": { "role": "neutral", "displayName": "Pearl", "canonical": "#ede9e4", "tonalRamp": ["#2a2724", "#47433f", "#6a655f", "#8d8994", "#b8b3ad", "#d4cfc9", "#ede9e4", "#f8f6f3"] },
+      "pearl-dim": { "role": "neutral", "displayName": "Pearl Dim", "canonical": "#b8b3ad", "tonalRamp": ["#2a2724", "#47433f", "#6a655f", "#8d8994", "#b8b3ad", "#d4cfc9", "#ede9e4", "#f8f6f3"] },
+      "pearl-mute": { "role": "neutral", "displayName": "Pearl Mute", "canonical": "#8d8994", "tonalRamp": ["#26242a", "#3c3a42", "#55525c", "#706c78", "#8d8994", "#aaa7b0", "#c8c6cd", "#e6e5e9"] },
+      "iris": { "role": "primary", "displayName": "Iris Light", "canonical": "#c4b5fd", "tonalRamp": ["#1f1740", "#352a6b", "#4f3f99", "#6b58c4", "#8b7ae6", "#a897f5", "#c4b5fd", "#ebe5ff"] },
+      "iris-deep": { "role": "primary", "displayName": "Deep Iris", "canonical": "#8b7ae6", "tonalRamp": ["#1f1740", "#352a6b", "#4f3f99", "#6b58c4", "#8b7ae6", "#a897f5", "#c4b5fd", "#ebe5ff"] },
+      "chrome": { "role": "secondary", "displayName": "Chrome Hairline Metal", "canonical": "#b9c8d3", "tonalRamp": ["#1c2329", "#2f3a42", "#46545e", "#62717c", "#80909b", "#9dadb8", "#b9c8d3", "#e3ebf0"] },
+      "line": { "role": "neutral", "displayName": "Hairline", "canonical": "rgb(237 233 228 / 0.12)" },
+      "line-strong": { "role": "neutral", "displayName": "Hairline Strong", "canonical": "rgb(237 233 228 / 0.24)" },
+      "danger": { "role": "error", "displayName": "Danger Blush", "canonical": "#ffb4b4", "tonalRamp": ["#3d0f0f", "#661a1a", "#922828", "#bf3d3d", "#e66363", "#ff8f8f", "#ffb4b4", "#ffe3e3"] },
+      "success": { "role": "success", "displayName": "Success Mint", "canonical": "#b8f0d2", "tonalRamp": ["#0d3322", "#165237", "#20744f", "#2d9867", "#47bb85", "#82dcae", "#b8f0d2", "#e5fbef"] }
+    },
+    "typographyMeta": {
+      "display-names": { "displayName": "Display Names", "purpose": "The couple's names on the invitation hero only." },
+      "display": { "displayName": "Display", "purpose": "Landing hero statement; second line italic and indented." },
+      "headline": { "displayName": "Headline", "purpose": "Section statements; second clause often italic Pearl Mute. Observed range clamp(2.4rem...) to clamp(3.2rem, 10vw, 9rem)." },
+      "title": { "displayName": "Title", "purpose": "Plan names, panel headings, venue names, list item names (1.75 to 2.4rem)." },
+      "numeral": { "displayName": "Numeral", "purpose": "Prices, venue times, countdown, stats; outlined chrome-stroke variant for sequence numbers." },
+      "body": { "displayName": "Body", "purpose": "Reading copy, 34 to 62ch." },
+      "body-small": { "displayName": "Body Small", "purpose": "Hints, errors, captions, link rows." },
+      "label": { "displayName": "Label (metadata voice)", "purpose": "Uppercase metadata: field labels, dates, terms, nav, fiction notes. Never a kicker above a heading." },
+      "button": { "displayName": "Button", "purpose": "Uppercase pill labels." }
+    },
+    "shadows": [
+      { "name": "device-drop", "value": "0 50px 100px -40px rgb(0 0 0 / 0.9)", "purpose": "Only under the iPhone frame that holds the real demo capture." },
+      { "name": "focus-ring", "value": "outline: 1.5px solid #c4b5fd; outline-offset: 3px", "purpose": "Global keyboard focus." }
+    ],
+    "motion": [
+      { "name": "ease-couture", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Entrances and state transitions (expo-out); GSAP default expo.out, 1.2s." },
+      { "name": "ease-silk", "value": "cubic-bezier(0.65, 0, 0.35, 1)", "purpose": "Ambient loops (fallback drift, breathe)." },
+      { "name": "control-transition", "value": "500ms ease-couture", "purpose": "Pill colour and border changes." },
+      { "name": "field-transition", "value": "300ms ease-couture", "purpose": "Underline colour on focus and error." },
+      { "name": "scene-crossfade", "value": "1400ms ease-couture", "purpose": "CSS poster to WebGL handover." },
+      { "name": "scroll-reveal", "value": "from opacity 0.3, y 32px, blur 6px; 1.6s expo.out; once at top 88%", "purpose": "The only scroll grammar, for large headlines marked for reveal." },
+      { "name": "opening-landing", "value": "lines rise yPercent 110, 1.6s, stagger 0.12; fades 1.2s; sculpture settles from open 0.9 over 2.6s", "purpose": "Landing's one opening moment." },
+      { "name": "opening-invitation", "value": "gate blur-out 0.7s; sculpture inflates 1.15s; pearl-iris flash to 0.92 then out 1.6s; names from blur 22px, scale 1.18 over 2.1s; beam sweep 2.2s", "purpose": "Invitation's one opening moment." },
+      { "name": "drift", "value": "14s ease-silk infinite alternate", "purpose": "CSS sculpture fallback idle motion; off under reduced motion." },
+      { "name": "reduced-motion", "value": "animation and transition durations 0.001ms; no timelines, reveals or parallax; WebGL frameloop on demand with frozen time", "purpose": "prefers-reduced-motion behaviour." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ],
+    "sculptureTiers": [
+      { "name": "high", "geometryDetail": 72, "particles": 1400, "dpr": "1-2", "antialias": true, "when": "fine pointer, large screen, memory and cores above 2" },
+      { "name": "mid", "geometryDetail": 44, "particles": 700, "dpr": "1-1.6", "antialias": true, "when": "coarse pointer or smallest viewport side under 600px" },
+      { "name": "low", "geometryDetail": 24, "particles": 280, "dpr": "1", "antialias": false, "when": "deviceMemory 2 or less, or 2 cores or fewer" },
+      { "name": "css-fallback", "when": "no WebGL, save-data or 2G, render error, or context loss" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Pill",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main action; pearl fill that turns iris on hover.",
+      "html": "<button class=\"ds-btn-primary\"><span>Ouvrir l’invitation démo</span><svg width=\"14\" height=\"10\" viewBox=\"0 0 14 10\" aria-hidden=\"true\"><path d=\"M1 5h12M9 1l4 4-4 4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 12px; min-height: 48px; padding: 0 28px; border: 0; border-radius: 9999px; background: #ede9e4; color: #0b0b12; font-family: 'Jost Variable', ui-sans-serif, system-ui, sans-serif; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background-color 500ms cubic-bezier(0.22,1,0.36,1), transform 500ms cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary svg { transition: transform 500ms cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary:hover { background: #c4b5fd; } .ds-btn-primary:hover svg { transform: translateX(4px); } .ds-btn-primary:active { transform: scale(0.98); } .ds-btn-primary:focus-visible { outline: 1.5px solid #c4b5fd; outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Pill",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action; hairline border that lights iris on hover.",
+      "html": "<button class=\"ds-btn-ghost\">Voir les offres</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; min-height: 48px; padding: 0 28px; border: 1px solid rgb(237 233 228 / 0.24); border-radius: 9999px; background: transparent; color: #ede9e4; font-family: 'Jost Variable', ui-sans-serif, system-ui, sans-serif; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: color 500ms cubic-bezier(0.22,1,0.36,1), border-color 500ms cubic-bezier(0.22,1,0.36,1); } .ds-btn-ghost:hover { border-color: #c4b5fd; color: #c4b5fd; } .ds-btn-ghost:focus-visible { outline: 1.5px solid #c4b5fd; outline-offset: 3px; }"
+    },
+    {
+      "name": "Underline Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Label in the metadata voice above a single underline; iris on focus, danger on error.",
+      "html": "<label class=\"ds-field-wrap\"><span class=\"ds-field-label\">Prénom</span><input class=\"ds-field\" placeholder=\"Camille\"></label>",
+      "css": ".ds-field-wrap { display: flex; flex-direction: column; } .ds-field-label { font-family: 'Jost Variable', ui-sans-serif, system-ui, sans-serif; font-size: 0.75rem; font-weight: 450; letter-spacing: 0.18em; text-transform: uppercase; color: #b8b3ad; } .ds-field { width: 100%; background: transparent; border: 0; border-bottom: 1px solid rgb(237 233 228 / 0.24); border-radius: 0; padding: 0.85rem 0 0.7rem; font-family: 'Jost Variable', ui-sans-serif, system-ui, sans-serif; font-size: 1rem; color: #ede9e4; caret-color: #c4b5fd; transition: border-color 300ms cubic-bezier(0.22,1,0.36,1); } .ds-field::placeholder { color: #8d8994; } .ds-field:focus { outline: none; border-bottom-color: #c4b5fd; } .ds-field[aria-invalid='true'] { border-bottom-color: #ffb4b4; }"
+    },
+    {
+      "name": "Event Status Chip",
+      "kind": "chip",
+      "refersTo": "chip-status-published",
+      "description": "Operate status pill with a dot; success when published, hairline when draft.",
+      "html": "<span class=\"ds-chip-status\"><span class=\"ds-dot\"></span>En ligne</span> <span class=\"ds-chip-status ds-draft\"><span class=\"ds-dot\"></span>Brouillon</span>",
+      "css": ".ds-chip-status { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border: 1px solid rgb(184 240 210 / 0.5); border-radius: 9999px; color: #b8f0d2; font-family: 'Jost Variable', ui-sans-serif, system-ui, sans-serif; font-size: 0.75rem; font-weight: 450; letter-spacing: 0.18em; text-transform: uppercase; } .ds-chip-status .ds-dot { width: 6px; height: 6px; border-radius: 9999px; background: #b8f0d2; } .ds-chip-status.ds-draft { border-color: rgb(237 233 228 / 0.24); color: #b8b3ad; } .ds-chip-status.ds-draft .ds-dot { background: #8d8994; }"
+    },
+    {
+      "name": "Guest Status Chips",
+      "kind": "chip",
+      "refersTo": "chip-guest-attending",
+      "description": "Dense-list reply states: attending (mint tint), declined (pearl tint), pending (dashed).",
+      "html": "<span class=\"ds-guest ds-yes\">Présent·e <span class=\"ds-tnum\">+1</span></span> <span class=\"ds-guest ds-no\">Absent·e</span> <span class=\"ds-guest ds-wait\">En attente</span>",
+      "css": ".ds-guest { display: inline-flex; align-items: center; gap: 8px; padding: 4px 10px; border-radius: 9999px; font-family: 'Jost Variable', ui-sans-serif, system-ui, sans-serif; font-size: 0.8125rem; white-space: nowrap; } .ds-yes { background: rgb(184 240 210 / 0.1); color: #b8f0d2; } .ds-no { background: rgb(237 233 228 / 0.05); color: #b8b3ad; } .ds-wait { border: 1px dashed rgb(237 233 228 / 0.24); color: #8d8994; } .ds-tnum { font-variant-numeric: tabular-nums lining-nums; }"
+    },
+    {
+      "name": "Demo Badge",
+      "kind": "chip",
+      "refersTo": "badge-demo",
+      "description": "Mandatory marker for fictional content on demo surfaces.",
+      "html": "<span class=\"ds-demo\"><span class=\"ds-dot\"></span>Démonstration — contenu fictif</span>",
+      "css": ".ds-demo { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border: 1px solid rgb(196 181 253 / 0.4); border-radius: 9999px; color: #c4b5fd; font-family: 'Jost Variable', ui-sans-serif, system-ui, sans-serif; font-size: 0.75rem; font-weight: 450; letter-spacing: 0.18em; text-transform: uppercase; } .ds-demo .ds-dot { width: 6px; height: 6px; border-radius: 9999px; background: #c4b5fd; }"
+    },
+    {
+      "name": "Site Navigation",
+      "kind": "nav",
+      "description": "Logo with iris period, metadata-voice links, outlined organizer pill.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-logo\" href=\"#\">VOW<span>.</span></a><div class=\"ds-links\"><a href=\"#\">Démo</a><a href=\"#\">Offres</a><a class=\"ds-nav-cta\" href=\"#\">Espace organisateur</a></div></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; height: 80px; padding: 0 40px; background: #0b0b12; border-bottom: 1px solid rgb(237 233 228 / 0.12); } .ds-logo { font-family: 'Bodoni Moda Variable', 'Didot', 'Bodoni 72', serif; font-size: 1.6rem; letter-spacing: -0.04em; line-height: 1; color: #ede9e4; text-decoration: none; } .ds-logo span { color: #c4b5fd; } .ds-links { display: flex; align-items: center; gap: 36px; } .ds-links a { font-family: 'Jost Variable', ui-sans-serif, system-ui, sans-serif; font-size: 0.75rem; font-weight: 450; letter-spacing: 0.18em; text-transform: uppercase; color: #b8b3ad; text-decoration: none; transition: color 300ms; } .ds-links a:hover { color: #ede9e4; } .ds-links .ds-nav-cta { padding: 10px 20px; border: 1px solid rgb(237 233 228 / 0.24); border-radius: 9999px; color: #ede9e4; } .ds-links .ds-nav-cta:hover { border-color: #c4b5fd; color: #c4b5fd; } .ds-links a:focus-visible, .ds-logo:focus-visible { outline: 1.5px solid #c4b5fd; outline-offset: 3px; }"
+    },
+    {
+      "name": "Plan Card",
+      "kind": "card",
+      "refersTo": "card-panel",
+      "description": "Highlighted plan: obsidian-3 with an iris ring; numeral price in Bodoni.",
+      "html": "<article class=\"ds-plan\"><h3>Signature</h3><p class=\"ds-price\">99 €</p><p class=\"ds-meta\">Paiement unique · TTC</p></article>",
+      "css": ".ds-plan { padding: 40px; border-radius: 1.5rem; background: #1a1a27; box-shadow: 0 0 0 1px rgb(196 181 253 / 0.4); color: #ede9e4; } .ds-plan h3 { margin: 0; font-family: 'Bodoni Moda Variable', 'Didot', serif; font-weight: 400; font-size: 2.4rem; line-height: 1; letter-spacing: -0.035em; } .ds-price { margin: 40px 0 0; font-family: 'Bodoni Moda Variable', 'Didot', serif; font-size: 4.5rem; line-height: 1; letter-spacing: -0.035em; font-variant-numeric: tabular-nums lining-nums; } .ds-meta { margin: 12px 0 0; font-family: 'Jost Variable', ui-sans-serif, sans-serif; font-size: 0.75rem; font-weight: 450; letter-spacing: 0.18em; text-transform: uppercase; color: #b8b3ad; }"
+    },
+    {
+      "name": "Outlined Numeral",
+      "kind": "custom",
+      "description": "Chrome-stroked Bodoni numeral for real sequences; decorative, aria-hidden.",
+      "html": "<span class=\"ds-outline-num\" aria-hidden=\"true\">2</span>",
+      "css": ".ds-outline-num { display: block; font-family: 'Bodoni Moda Variable', 'Didot', serif; font-size: 6rem; line-height: 1; letter-spacing: -0.035em; color: transparent; -webkit-text-stroke: 1px #b9c8d3; font-variant-numeric: tabular-nums lining-nums; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Object of Light",
+    "overview": "VOW. is a dark room with one lit object in it. Obsidian owns every surface; a living glass-and-chrome sculpture, rendered in hand-written GLSL, is both the product and its proof. Type is monumental and editorial (Bodoni Moda, set tight and tall) for names and statements, and quietly functional (Jost) for everything that works. Colour behaves like light, not paint: Iris appears where light would (sculpture glow, focus, active and selected states, the period in the logo), Chrome appears where metal would (orbit ring, outlined numerals, plate frames, the select chevron).\n\nComposition is asymmetric and generous: the sculpture takes the right two thirds of the landing hero, headlines sit low-left with the second line indented and italic, and sections breathe on 8 to 11rem of vertical air. Film grain sits at the edge of perception (7% overlay) on the hero only. Motion is sparse and authored: one opening moment per page, one scroll grammar for large headlines, and nothing else moves unless touched.\n\nThe world refuses the category default (cream card, script type, photo carousel), pervasive gradients and standard glassmorphism. Iridescence lives inside the 3D material and never in text.\n\nThe same world carries three modes. Persuade (landing) and Experience (invitation) are monumental and cinematic. Operate (organizer space) keeps the palette, fonts, pills and hairlines but drops the sculpture, the grain and the authored motion, and shrinks display type to working size.",
+    "keyCharacteristics": [
+      "Obsidian ground on every surface; pearl type; iris only as light; chrome only as metal.",
+      "Bodoni Moda at monumental scale with tight tracking (-0.035em) and leading (0.88); Jost at 380 weight for reading.",
+      "Pill controls, underline fields, 1px pearl hairlines at 12% and 24%.",
+      "Procedural WebGL sculpture with device tiers and an instant CSS poster fallback.",
+      "Raster imagery is only ever a still of the real sculpture or a real capture of the product, with provenance.",
+      "Fiction is always labelled as fiction; unavailable features are always labelled as such."
+    ],
+    "rules": [
+      { "name": "The Light Not Paint Rule", "body": "Iris marks where light falls or what is active: glow, focus, selection, hover, the active item. It never fills a large surface and never colours body text.", "section": "colors" },
+      { "name": "The Metal Rule", "body": "Chrome is only ever a line: a stroke, a ring, a frame. It is never a fill or a text colour for reading copy.", "section": "colors" },
+      { "name": "The One Ground Rule", "body": "Every surface is obsidian. Raised steps (obsidian-2, obsidian-3) are rare and tonal, never a light theme.", "section": "colors" },
+      { "name": "The Metadata Not Kicker Rule", "body": "The uppercase label voice describes data (a field, a date, a term, a status). It is never placed as a decorative kicker or eyebrow above a heading.", "section": "typography" },
+      { "name": "The Speaking Serif Rule", "body": "Bodoni is for things that are said or counted; anything that is operated (inputs, buttons, chips, body) is Jost.", "section": "typography" },
+      { "name": "The Iridescence-in-Material Rule", "body": "No gradient text, no iridescent type. Type is pearl, pearl-dim or pearl-mute; iris appears in type only as the logo period and state.", "section": "typography" },
+      { "name": "The Low-Left Rule", "body": "Hero statements anchor bottom-left with air above them; the object takes the open space.", "section": "layout" },
+      { "name": "The Light Is the Depth Rule", "body": "If something needs to feel lifted, light it (iris ring at 40%, obsidian-3) rather than shadow it.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep obsidian as the ground of every surface and pearl as the reading colour.",
+      "Do use iris only for light and state: focus, selection, hover, active, glow, the logo period.",
+      "Do use chrome only as line: strokes, rings, frames, outlined numerals.",
+      "Do make every control a pill and every field an underline.",
+      "Do set statements in Bodoni Moda with tracking -0.035em and leading 0.88, and keep a second clause in italic Pearl Mute when a headline has two beats.",
+      "Do give each page at most one authored opening moment and start every scroll reveal from a legible state.",
+      "Do ship the CSS sculpture first and let WebGL crossfade in; keep the tier budgets (detail 72/44/24, particles 1400/700/280).",
+      "Do label fiction, unavailable features and local-only data in plain words, every time.",
+      "Do add a provenance entry for every raster plate."
+    ],
+    "donts": [
+      "Don't use gradient or iridescent text; iridescence lives in the 3D material.",
+      "Don't use stock photography, AI-generated imagery or invented photos; plates are stills of the real sculpture or real product captures only.",
+      "Don't invent testimonials, customers, press, addresses or results.",
+      "Don't use frosted-glass cards; blur is reserved for near-opaque functional chrome (header, save bar, lightbox).",
+      "Don't add shadows to UI elements; the device frame drop is the only one.",
+      "Don't put the uppercase Label voice above a heading as a kicker.",
+      "Don't bring the sculpture, grain or opening choreography into Operate surfaces."
+    ]
+  }
+}
